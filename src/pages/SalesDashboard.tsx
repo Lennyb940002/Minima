@@ -11,9 +11,10 @@ export function SalesDashboard() {
   const [profitPeriod, setProfitPeriod] = useState<'jour' | 'semaine' | 'mois'>('jour');
 
   return (
-    <div className="grid grid-cols-3 gap-6 p-6">
+    <div className="grid grid-cols-12 gap-6 p-6 ">
+      {/* Rangée 1 */}
       {/* Vue d'ensemble des ventes */}
-      <div className="row-span-3 col-start-2 row-start-1">
+      <div className="col-span-4 row-span-2 bg-white">
         <MetricCard
           title="Vue d'ensemble des ventes"
           value="33"
@@ -23,7 +24,7 @@ export function SalesDashboard() {
       </div>
 
       {/* Vue d'ensemble du CA */}
-      <div className="row-span-4 col-start-1">
+      <div className="col-span-4 row-span-2 bg-white">
         <MetricCard
           title="Vue d'ensemble du CA"
           value="+ 7 096 €"
@@ -33,17 +34,18 @@ export function SalesDashboard() {
       </div>
 
       {/* Evolution des ventes */}
-      <div className="row-span-4 col-start-3 row-start-1">
+      <div className="col-span-4 row-span-2" >
         <SalesChart />
       </div>
 
+      {/* Rangée 2 */}
       {/* Note */}
-      <div className="row-span-2 col-start-1 row-start-5">
+      <div className="col-span-4 row-span-2">
         <NotesSection />
       </div>
 
       {/* Bénéfices */}
-      <div className="row-span-3 col-start-2 row-start-4">
+      <div className="col-span-4 row-span-2 bg-white" >
         <MetricCard
           title="Bénéfices"
           value="+ 4 520 €"
@@ -53,12 +55,13 @@ export function SalesDashboard() {
       </div>
 
       {/* Stat */}
-      <div className="row-span-4 col-start-3 row-start-5">
+      <div className="col-span-4 row-span-3">
         <StatsCard />
       </div>
 
+      {/* Rangée 3 */}
       {/* Tableau */}
-      <div className="col-span-2 row-span-2 col-start-1 row-start-7">
+      <div className="col-span-8 row-span-1" >
         <SalesTable />
       </div>
     </div>

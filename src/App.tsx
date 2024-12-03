@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { HomePage } from './pages/HomePage';
-import { SalesDashboard } from './pages/SalesDashboard';
+import { SalesDashboard } from '/src/pages/SalesDashboard';
 import { StockPage } from './pages/StockPage';
 import { AccountingPage } from './pages/AccountingPage';
 
