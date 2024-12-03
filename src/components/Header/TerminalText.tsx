@@ -1,26 +1,45 @@
 import { useEffect, useState } from 'react';
 
 const messages = [
-  "Tu vas cartonner !",
-  "Fonce !",
-  "Tu es un champion !",
-  "Crois en toi !",
-  "Victoire imminente !",
-  "Tu vas déchirer !",
-  "Rien ne t'arrête !",
-  "Success mode : ON !",
-  "Tu es génial !",
-  "Go, go, go !"
+  "Lance-toi, le monde t'attend !",
+  "Chaque jour est une opportunité !",
+  "Crée ton succès, pas à pas.",
+  "Les défis construisent des leaders.",
+  "Rêve grand, agis vite.",
+  "Ton potentiel est infini.",
+  "La persévérance paie toujours.",
+  "Ta vision change le monde.",
+  "Ose, apprends, réussis.",
+  "C'est ton moment, brille !",
+  "Tu es à une idée de la réussite.",
+  "Fais un pas aujourd'hui, un bond demain.",
+  "Ton énergie est contagieuse, inspire !",
+  "Le succès aime les esprits audacieux.",
+  "Les grands rêves commencent petits.",
+  "Construis ton empire, pierre par pierre.",
+  "Le futur appartient à ceux qui osent.",
+  "Chaque échec est une leçon déguisée.",
+  "Rien n’est impossible pour toi.",
+  "La passion mène à l’excellence.",
+  "Tu crées ta propre opportunité.",
+  "Le succès commence dans ton esprit.",
+  "Transforme ta vision en action.",
+  "Le moment idéal, c'est maintenant.",
+  "Crois, crée, conquiers.",
+  "Ta détermination ouvre des portes.",
+  "Chaque pas compte, avance !",
+  "Fais de ton rêve une réalité.",
+  "Le travail acharné bat le talent."
 ];
 
 export function TerminalText() {
   const [text, setText] = useState('');
   const [messageIndex, setMessageIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
-  
+
   useEffect(() => {
     const currentMessage = messages[messageIndex];
-    
+
     if (isTyping) {
       if (text.length < currentMessage.length) {
         const timeout = setTimeout(() => {

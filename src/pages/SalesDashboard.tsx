@@ -12,7 +12,8 @@ export function SalesDashboard() {
 
   return (
     <div className="grid grid-cols-3 gap-6 p-6">
-      <div className="row-span-2">
+      {/* Vue d'ensemble des ventes */}
+      <div className="row-span-3 col-start-2 row-start-1">
         <MetricCard
           title="Vue d'ensemble des ventes"
           value="33"
@@ -20,7 +21,9 @@ export function SalesDashboard() {
           onPeriodChange={setSalesPeriod}
         />
       </div>
-      <div className="col-span-2 row-span-1">
+
+      {/* Vue d'ensemble du CA */}
+      <div className="row-span-4 col-start-1">
         <MetricCard
           title="Vue d'ensemble du CA"
           value="+ 7 096 €"
@@ -28,10 +31,19 @@ export function SalesDashboard() {
           onPeriodChange={setRevenuePeriod}
         />
       </div>
-      <div className="row-span-2">
+
+      {/* Evolution des ventes */}
+      <div className="row-span-4 col-start-3 row-start-1">
+        <SalesChart />
+      </div>
+
+      {/* Note */}
+      <div className="row-span-2 col-start-1 row-start-5">
         <NotesSection />
       </div>
-      <div className="row-span-2">
+
+      {/* Bénéfices */}
+      <div className="row-span-3 col-start-2 row-start-4">
         <MetricCard
           title="Bénéfices"
           value="+ 4 520 €"
@@ -39,14 +51,15 @@ export function SalesDashboard() {
           onPeriodChange={setProfitPeriod}
         />
       </div>
-      <div className="col-span-2">
-        <SalesChart />
-      </div>
-      <div className="col-span-2">
-        <SalesTable />
-      </div>
-      <div className="row-span-2">
+
+      {/* Stat */}
+      <div className="row-span-4 col-start-3 row-start-5">
         <StatsCard />
+      </div>
+
+      {/* Tableau */}
+      <div className="col-span-2 row-span-2 col-start-1 row-start-7">
+        <SalesTable />
       </div>
     </div>
   );

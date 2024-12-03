@@ -15,9 +15,13 @@ export function HomePage() {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-6 p-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-5 p-6 " style={{ width: '1250px', marginLeft: '5%', marginTop: '7.5%' }}>
       {sections.map((section) => (
-        <div key={section.title} onClick={() => navigate(section.path)}>
+        <div
+          key={section.title}
+          onClick={() => navigate(section.path)}
+          className="w-3/4 mx-auto"
+        >
           <DashboardCard title={section.title} Icon={section.Icon} />
         </div>
       ))}
