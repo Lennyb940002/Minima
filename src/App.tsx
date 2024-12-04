@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { HomePage } from './pages/HomePage';
-import { SalesDashboard } from '/src/pages/SalesDashboard';
+import { SalesDashboard } from './pages/SalesDashboard';
 import { StockPage } from './pages/StockPage';
 import { AccountingPage } from './pages/AccountingPage';
+import { NotePage } from './pages/NotePage';
+import { TablePage } from './pages/TablePage';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Route path="/e-commerce/ventes" element={<SalesDashboard />} />
             <Route path="/e-commerce/stock" element={<StockPage />} />
             <Route path="/e-commerce/comptabilite" element={<AccountingPage />} />
+            <Route path="/e-commerce/note" element={<NotePage />} />
+            <Route path="/e-commerce/table" element={<TablePage />} />
           </Routes>
         </main>
       </div>

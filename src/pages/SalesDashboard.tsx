@@ -11,58 +11,49 @@ export function SalesDashboard() {
   const [profitPeriod, setProfitPeriod] = useState<'jour' | 'semaine' | 'mois'>('jour');
 
   return (
-    <div className="grid grid-cols-12 gap-6 p-6 ">
-      {/* Rangée 1 */}
-      {/* Vue d'ensemble des ventes */}
-      <div className="col-span-4 row-span-2 bg-white">
-        <MetricCard
-          title="Vue d'ensemble des ventes"
-          value="33"
-          period={salesPeriod}
-          onPeriodChange={setSalesPeriod}
-        />
-      </div>
-
-      {/* Vue d'ensemble du CA */}
-      <div className="col-span-4 row-span-2 bg-white">
-        <MetricCard
-          title="Vue d'ensemble du CA"
-          value="+ 7 096 €"
-          period={revenuePeriod}
-          onPeriodChange={setRevenuePeriod}
-        />
-      </div>
-
-      {/* Evolution des ventes */}
-      <div className="col-span-4 row-span-2" >
-        <SalesChart />
-      </div>
-
-      {/* Rangée 2 */}
-      {/* Note */}
-      <div className="col-span-4 row-span-2">
+    <div className="grid grid-cols-3 grid-rows-6 gap-4" style={{ width: '80%', marginLeft: '10%', marginTop: '-3%' }}>
+      {/* Section 1: Vue d'ensemble des ventes avec Note */}
+      <div className="row-span-4">
+        <div className="bg-black text-white border border-white rounded-[28px] mb-4 " style={{ height: '80%' }}>
+          <MetricCard
+            title="Vue d'ensemble des ventes"
+            value="33"
+            period={salesPeriod}
+            onPeriodChange={setSalesPeriod}
+          />
+        </div>
         <NotesSection />
       </div>
 
-      {/* Bénéfices */}
-      <div className="col-span-4 row-span-2 bg-white" >
-        <MetricCard
-          title="Bénéfices"
-          value="+ 4 520 €"
-          period={profitPeriod}
-          onPeriodChange={setProfitPeriod}
-        />
-      </div>
-
-      {/* Stat */}
-      <div className="col-span-4 row-span-3">
-        <StatsCard />
-      </div>
-
-      {/* Rangée 3 */}
-      {/* Tableau */}
-      <div className="col-span-8 row-span-1" >
+      {/* Section 2: Tableau des ventes */}
+      <div className="col-span-2 row-span-2 col-start-1 row-start-5" style={{ marginTop: '17%' }}>
         <SalesTable />
+      </div>
+
+      {/* Section 3: Vue d'ensemble du CA et Bénéfices */}
+      <div className="row-span-4 col-start-2 row-start-1 space-y-4">
+        <div className="bg-black text-white border border-white rounded-[28px]" style={{ height: '60%' }}>
+          <MetricCard
+            title="Vue d'ensemble du CA"
+            value="+ 7 096 €"
+            period={revenuePeriod}
+            onPeriodChange={setRevenuePeriod}
+          />
+        </div>
+        <div className="bg-black text-white border border-white rounded-[28px]" style={{ height: '60%' }}>
+          <MetricCard
+            title="Bénéfices"
+            value="+ 4 520 €"
+            period={profitPeriod}
+            onPeriodChange={setProfitPeriod}
+          />
+        </div>
+      </div>
+
+      {/* Section 4: Évolution des ventes et Statistiques */}
+      <div className="row-span-6 col-start-3 row-start-1 space-y-4">
+        <SalesChart />
+        <StatsCard />
       </div>
     </div>
   );

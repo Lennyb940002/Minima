@@ -1,14 +1,21 @@
+import { useNavigate } from 'react-router-dom';
+
 export function SalesTable() {
+  const navigate = useNavigate();
+
+  const handleTableClick = () => {
+    navigate('/e-commerce/table');
+  };
+
   return (
-    <div className="bg-black border border-white rounded-lg p-6">
+    <div
+      className="bg-black border border-white rounded-[28px] text-center p-6 cursor-pointer hover:opacity-80 transition-opacity"
+      style={{ height: '130%' }}
+      onClick={handleTableClick}
+    >
       <h3 className="text-white text-2xl font-bold mb-6">Tableau</h3>
-      <div className="border border-white/20 rounded">
-        <div className="grid grid-cols-4 gap-4 p-4 border-b border-white/20">
-          <div className="text-white font-medium">Date</div>
-          <div className="text-white font-medium">Produit</div>
-          <div className="text-white font-medium">Quantité</div>
-          <div className="text-white font-medium">Total</div>
-        </div>
+      <div className="border border-white rounded">
+        <img src="" alt="" />
       </div>
     </div>
   );
