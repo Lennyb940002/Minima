@@ -9,10 +9,9 @@ export function AddSaleButton({ onClick }: AddSaleButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors text-lg font-medium shadow-lg"
+      className="fixed bottom-5 left-1/2 transform -translate-x-1/2 flex items-center gap-2 px-5 py-5 bg-white text-black rounded-[35px] hover:bg-gray-200 transition-colors text-lg font-medium shadow-lg"
     >
-      <PlusCircle size={24} />
-      Ajouter une vente
+      <PlusCircle size={32} />
     </button>
   );
 }

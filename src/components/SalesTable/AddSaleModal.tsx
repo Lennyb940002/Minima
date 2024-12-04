@@ -33,17 +33,17 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-gray-900 p-6 rounded-lg w-full max-w-md">
+      <div className="bg-black border border-white p-6 rounded-lg w-full max-w-md">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold text-white">Nouvelle Vente</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-white">
+          <button onClick={onClose} className="text-white hover:text-white">
             <X size={24} />
           </button>
         </div>
-        
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300">Produit</label>
+            <label className="block text-sm font-medium text-white">Produit</label>
             <input
               type="text"
               required
@@ -52,7 +52,7 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
               onChange={e => setFormData(prev => ({ ...prev, product: e.target.value }))}
             />
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-300">Quantité</label>

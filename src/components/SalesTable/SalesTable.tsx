@@ -10,16 +10,16 @@ export function SalesTable({ sales, onAddSale }: SalesTableProps) {
 
   const totalSales = sales.reduce((sum, sale) => sum + sale.salePrice, 0);
   const totalQuantity = sales.reduce((sum, sale) => sum + sale.quantity, 0);
-  const totalMargin = sales.reduce((sum, sale) => 
+  const totalMargin = sales.reduce((sum, sale) =>
     sum + (sale.salePrice - sale.unitCost * sale.quantity), 0);
 
   return (
-    <div className="p-6 flex flex-col min-h-screen">
+    <div className="p-2 flex flex-col">
       <SalesTableHeader />
-      
-      <div className="overflow-x-auto flex-grow mb-8">
+
+      <div className="overflow-x-auto flex-grow mb-4">
         <table className="w-full text-left text-white">
-          <thead className="bg-gray-800">
+          <thead className="bg-black">
             <tr>
               <th className="px-4 py-3">Produit</th>
               <th className="px-4 py-3">Quantité</th>
@@ -38,7 +38,7 @@ export function SalesTable({ sales, onAddSale }: SalesTableProps) {
               <SalesTableRow key={sale.id} sale={sale} />
             ))}
           </tbody>
-          <tfoot className="bg-gray-800">
+          <tfoot className="bg-black">
             <tr>
               <td className="px-4 py-3 font-bold">Totaux</td>
               <td className="px-4 py-3">{totalQuantity}</td>
