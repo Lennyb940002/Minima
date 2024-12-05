@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header/Header';
-import { HomePage } from './pages/HomePage';
-import { SalesDashboard } from './pages/SalesDashboard';
-import { StockPage } from './pages/StockPage';
-import { AccountingPage } from './pages/AccountingPage';
-import { NotePage } from './pages/NotePage';
-import { TablePage } from './pages/TablePage';
+import { HomePage } from './pages/PageVente/HomePage';
+import { SalesDashboard } from './pages/PageVente/SalesDashboard';
+import { StockPage } from './pages/PageVente/StockPage';
+import { AccountingPage } from './pages/PageVente/AccountingPage';
+import { NotePage } from './pages/PageVente/NotePage';
+import { TablePage } from './pages/PageVente/TablePage';
 
 function App() {
   return (

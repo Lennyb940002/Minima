@@ -1,14 +1,22 @@
-// src/pages/AccountingPage.tsx
-import { useState } from 'react';
-import { Euro, TrendingUp, TrendingDown } from 'lucide-react';
-import { StatCard } from '../components/Accounting/StatCard';
-import { TransactionList } from '../components/Accounting/TransactionList';
+import React, { useState } from 'react';
+import { Euro, TrendingUp, TrendingDown, Plus } from 'lucide-react';
+import { StatCard } from '/src/components/Accounting/StatCard';
+import { TransactionList } from '/src/components/Accounting/TransactionList';
+import { AddTransactionModal } from '/src/components/Accounting/AddTransactionModal';
+
+interface Transaction {
+  type: 'revenus' | 'dépenses';
+  amount: number;
+  date: string;
+  description?: string;
+}
 
 export function AccountingPage() {
   const [period, setPeriod] = useState<'jour' | 'semaine' | 'mois'>('mois');
-
-  // Exemple de données financières
-  const exampleData = {
+  const [transactions, setTransactions] = useState<{
+    revenues: Record<string, number>;
+    expenses: Record<string, number>;
+  }>({
     revenues: {
       '10/12/24': 1200,
       '09/12/24': 800,
@@ -20,9 +28,28 @@ export function AccountingPage() {
       other: 100,
       total: 550,
     },
+  });
+
+  const addTransaction = (transaction: Transaction) => {
+    const { type, amount, date } = transaction;
+
+    setTransactions(prev => {
+      const updatedTransactions = { ...prev };
+
+      // Ajouter la transaction au bon endroit
+      if (type === 'revenus') {
+        updatedTransactions.revenues[date] = amount;
+        updatedTransactions.revenues.total += amount;
+      } else {
+        updatedTransactions.expenses[date] = amount;
+        updatedTransactions.expenses.total += amount;
+      }
+
+      return updatedTransactions;
+    });
   };
 
-  const profit = exampleData.revenues.total - exampleData.expenses.total;
+  const profit = transactions.revenues.total - transactions.expenses.total;
 
   return (
     <div className="space-y-6">
@@ -42,21 +69,18 @@ export function AccountingPage() {
       </div>
 
       <div className="grid grid-cols-3 gap-6">
-        {/* Revenus */}
         <StatCard
           title="Revenus"
-          value={exampleData.revenues.total}
+          value={transactions.revenues.total}
           icon={<Euro className="w-6 h-6 text-white" />}
         />
 
-        {/* Dépenses */}
         <StatCard
           title="Dépenses"
-          value={exampleData.expenses.total}
+          value={transactions.expenses.total}
           icon={<TrendingDown className="w-6 h-6 text-white" />}
         />
 
-        {/* Bénéfices */}
         <StatCard
           title="Bénéfices"
           value={profit}
@@ -65,8 +89,10 @@ export function AccountingPage() {
       </div>
 
       <div className="bg-black border border-white rounded-lg p-6 mt-6">
-        <TransactionList data={exampleData.revenues} period={period} />
+        <TransactionList data={transactions.revenues} period={period} />
       </div>
+
+      <AddTransactionModal onAddTransaction={addTransaction} />
     </div>
   );
 }

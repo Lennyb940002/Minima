@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { MetricCard } from '../components/sales/MetricCard';
-import { SalesChart } from '../components/sales/SalesChart';
-import { NotesSection } from '../components/sales/NotesSection';
-import { StatsCard } from '../components/sales/StatsCard';
-import { SalesTable } from '../components/sales/SalesTable';
+import { MetricCard } from '../../components/sales/MetricCard';
+import { SalesChart } from '../../components/sales/SalesChart';
+import { NotesSection } from '../../components/sales/NotesSection';
+import { StatsCard } from '../../components/sales/StatsCard';
+import { SalesTable } from '../../components/sales/SalesTable';
 
 export function SalesDashboard() {
   const [salesPeriod, setSalesPeriod] = useState<'jour' | 'semaine' | 'mois'>('jour');

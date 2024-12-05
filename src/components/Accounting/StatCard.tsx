@@ -1,20 +1,19 @@
 // src/components/Accounting/StatCard.tsx
-import { Euro, TrendingUp, TrendingDown } from 'lucide-react';
-
-type StatCardProps = {
+interface StatCardProps {
     title: string;
-    value: string | number;
-    icon: JSX.Element;
-};
+    value: number | string;
+    icon: React.ReactNode;
+}
 
 export function StatCard({ title, value, icon }: StatCardProps) {
     return (
-        <div className="bg-black border border-white rounded-lg p-6">
-            <div className="flex items-center gap-2 mb-4">
-                {icon}
-                <h2 className="text-xl font-bold text-white">{title}</h2>
+        <div className="bg-white text-black border border-white rounded-lg p-6">
+            <div className="flex items-center mb-4 text-black">
+                {/* Appliquez text-black à l'icône pour la rendre noire */}
+                <div className="text-black">{icon}</div>
+                <h3 className="ml-2 text-lg font-semibold">{title}</h3>
             </div>
-            <p className="text-3xl font-bold text-white">{value} €</p>
+            <p className="text-xl font-bold">{value}€</p>
         </div>
     );
 }

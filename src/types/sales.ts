@@ -1,3 +1,4 @@
+// types/sales.ts
 export interface Sale {
   id: string;
   product: string;
@@ -14,4 +15,5 @@ export interface Sale {
 export interface SalesTableProps {
   sales: Sale[];
   onAddSale: (sale: Omit<Sale, 'id'>) => void;
+  onDeleteSale: (id: string) => void;
 }

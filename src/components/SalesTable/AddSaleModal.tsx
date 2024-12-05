@@ -31,6 +31,20 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
     onClose();
   };
 
+  // Nouveau gestionnaire générique pour les inputs
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]:
+        name === 'quantity' ? parseInt(value, 10) :
+          name === 'salePrice' || name === 'unitCost' ? parseFloat(value) :
+            value
+    }));
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div className="bg-black border border-white p-6 rounded-lg w-full max-w-md">
@@ -46,10 +60,11 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
             <label className="block text-sm font-medium text-white">Produit</label>
             <input
               type="text"
+              name="product"
               required
               className="mt-1 w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white"
               value={formData.product}
-              onChange={e => setFormData(prev => ({ ...prev, product: e.target.value }))}
+              onChange={handleChange}
             />
           </div>
 
@@ -58,23 +73,25 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
               <label className="block text-sm font-medium text-gray-300">Quantité</label>
               <input
                 type="number"
+                name="quantity"
                 required
                 min="1"
                 className="mt-1 w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white"
                 value={formData.quantity}
-                onChange={e => setFormData(prev => ({ ...prev, quantity: parseInt(e.target.value) }))}
+                onChange={handleChange}
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-300">Prix de vente</label>
               <input
                 type="number"
+                name="salePrice"
                 required
                 min="0"
                 step="0.01"
                 className="mt-1 w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white"
                 value={formData.salePrice}
-                onChange={e => setFormData(prev => ({ ...prev, salePrice: parseFloat(e.target.value) }))}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -83,12 +100,13 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
             <label className="block text-sm font-medium text-gray-300">Coût unitaire</label>
             <input
               type="number"
+              name="unitCost"
               required
               min="0"
               step="0.01"
               className="mt-1 w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white"
               value={formData.unitCost}
-              onChange={e => setFormData(prev => ({ ...prev, unitCost: parseFloat(e.target.value) }))}
+              onChange={handleChange}
             />
           </div>
 
@@ -96,9 +114,10 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
             <label className="block text-sm font-medium text-gray-300">Client (Optionnel)</label>
             <input
               type="text"
+              name="customer"
               className="mt-1 w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white"
               value={formData.customer}
-              onChange={e => setFormData(prev => ({ ...prev, customer: e.target.value }))}
+              onChange={handleChange}
             />
           </div>
 
@@ -106,9 +125,10 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
             <div>
               <label className="block text-sm font-medium text-gray-300">Mode de paiement</label>
               <select
+                name="paymentMethod"
                 className="mt-1 w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white"
                 value={formData.paymentMethod}
-                onChange={e => setFormData(prev => ({ ...prev, paymentMethod: e.target.value as any }))}
+                onChange={handleChange}
               >
                 <option value="cash">Espèces</option>
                 <option value="card">Carte</option>
@@ -118,9 +138,10 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
             <div>
               <label className="block text-sm font-medium text-gray-300">Statut du paiement</label>
               <select
+                name="paymentStatus"
                 className="mt-1 w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white"
                 value={formData.paymentStatus}
-                onChange={e => setFormData(prev => ({ ...prev, paymentStatus: e.target.value as any }))}
+                onChange={handleChange}
               >
                 <option value="completed">Effectué</option>
                 <option value="pending">En attente</option>
@@ -132,9 +153,10 @@ export function AddSaleModal({ isOpen, onClose, onSubmit }: AddSaleModalProps) {
           <div>
             <label className="block text-sm font-medium text-gray-300">Notes (Optionnel)</label>
             <textarea
+              name="notes"
               className="mt-1 w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white"
               value={formData.notes}
-              onChange={e => setFormData(prev => ({ ...prev, notes: e.target.value }))}
+              onChange={handleChange}
             />
           </div>
 

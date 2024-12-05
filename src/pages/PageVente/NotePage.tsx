@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { NoteCard } from '../components/NotePage/NoteCard';
-import { NoteInput } from '../components/NotePage/NoteInput';
-import { EditNoteModal } from '../components/NotePage/EditNoteModal';
-import type { Note } from '../types/note';
+import { NoteCard } from '../../components/NotePage/NoteCard';
+import { NoteInput } from '../../components/NotePage/NoteInput';
+import { EditNoteModal } from '../../components/NotePage/EditNoteModal';
+import type { Note } from '../../types/note';
 
 export function NotePage() {
   const [notes, setNotes] = useState<Note[]>([]);

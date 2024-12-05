@@ -29,7 +29,8 @@ const messages = [
   "Ta détermination ouvre des portes.",
   "Chaque pas compte, avance !",
   "Fais de ton rêve une réalité.",
-  "Le travail acharné bat le talent."
+  "Le travail acharné bat le talent.",
+  "Je crois en toi, rien ne t'arrête.",
 ];
 
 export function TerminalText() {

@@ -1,3 +1,4 @@
+// components/SalesTable/SalesTable.tsx
 import React, { useState } from 'react';
 import { SalesTableHeader } from './SalesTableHeader';
 import { SalesTableRow } from './SalesTableRow';
@@ -5,7 +6,7 @@ import { AddSaleModal } from './AddSaleModal';
 import { AddSaleButton } from './AddSaleButton';
 import { Sale, SalesTableProps } from '../../types/sales';
 
-export function SalesTable({ sales, onAddSale }: SalesTableProps) {
+export function SalesTable({ sales, onAddSale, onDeleteSale }: SalesTableProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const totalSales = sales.reduce((sum, sale) => sum + sale.salePrice, 0);
@@ -15,10 +16,8 @@ export function SalesTable({ sales, onAddSale }: SalesTableProps) {
 
   return (
     <div className="p-2 flex flex-col">
-      <SalesTableHeader />
-
       <div className="overflow-x-auto flex-grow mb-4">
-        <table className="w-full text-left text-white">
+        <table className="w-full text-center text-white">
           <thead className="bg-black">
             <tr>
               <th className="px-4 py-3">Produit</th>
@@ -31,11 +30,16 @@ export function SalesTable({ sales, onAddSale }: SalesTableProps) {
               <th className="px-4 py-3">Mode de paiement</th>
               <th className="px-4 py-3">Statut</th>
               <th className="px-4 py-3">Notes</th>
+              <th className="px-4 py-3">Actions</th>
             </tr>
           </thead>
           <tbody>
             {sales.map(sale => (
-              <SalesTableRow key={sale.id} sale={sale} />
+              <SalesTableRow
+                key={sale.id}
+                sale={sale}
+                onDelete={onDeleteSale}
+              />
             ))}
           </tbody>
           <tfoot className="bg-black">
@@ -45,7 +49,7 @@ export function SalesTable({ sales, onAddSale }: SalesTableProps) {
               <td className="px-4 py-3">{totalSales.toFixed(2)} €</td>
               <td className="px-4 py-3">-</td>
               <td className="px-4 py-3">{totalMargin.toFixed(2)} €</td>
-              <td colSpan={5}></td>
+              <td colSpan={6}></td>
             </tr>
           </tfoot>
         </table>
